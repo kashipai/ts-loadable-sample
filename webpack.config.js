@@ -11,11 +11,25 @@ module.exports = {
 		extensions: [ '.js', '.jsx', '.ts', '.tsx' ]
 	},
 	devtool: 'source-map',
+	devServer: {
+		historyApiFallback: true
+	},
 	module: {
 		rules: [
 			{
 				test: /\.tsx?$/,
 				loader: 'awesome-typescript-loader'
+			},
+			{
+				test: /\.js$/,
+				exclude: [ /(node_modules)/ ],
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: [ '@babel/preset-env' ],
+						plugins: [ '@babel/plugin-syntax-dynamic-import' ]
+					}
+				}
 			}
 		]
 	},
