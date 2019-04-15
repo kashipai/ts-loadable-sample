@@ -5,7 +5,7 @@ module.exports = {
 	entry: './src/index.tsx',
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: 'bundle.js'
+		filename: '[name].[contenthash].js'
 	},
 	resolve: {
 		extensions: [ '.js', '.jsx', '.ts', '.tsx' ]
@@ -13,6 +13,13 @@ module.exports = {
 	devtool: 'source-map',
 	devServer: {
 		historyApiFallback: true
+	},
+	optimization: {
+		splitChunks: {
+			chunks: 'all',
+			maxInitialRequests: Infinity,
+			minSize: 0
+		}
 	},
 	module: {
 		rules: [
