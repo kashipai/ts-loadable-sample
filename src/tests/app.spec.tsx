@@ -21,4 +21,18 @@ describe('<NavigationComponent/>', () => {
 		const wrapper = render(<NavigationComponent />);
 		expect(wrapper.find('.nav-link').length).to.equal(2);
 	});
+
+	it('Should contain links for Home and About', () => {
+		const wrapper = render(<NavigationComponent />);
+		wrapper.find('.nav-link').each((index, element: CheerioElement) => {
+			switch (index) {
+				case 0:
+					expect(element.attribs['href']).to.equal('/');
+					break;
+				case 1:
+					expect(element.attribs['href']).to.equal('/about');
+					break;
+			}
+		});
+	});
 });
