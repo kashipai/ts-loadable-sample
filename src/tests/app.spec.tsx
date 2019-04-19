@@ -1,14 +1,18 @@
-import * as TestRenderer from 'react-test-renderer';
+import * as React from 'react';
+import { expect } from 'chai';
+import { mount, configure } from 'enzyme';
+import { spy } from 'sinon';
 import NavigationComponent from '../components/navigation';
+import * as ReactSixteenAdapter from 'enzyme-adapter-react-16';
 
-let renderer: TestRenderer.ReactTestRenderer;
-let instance: TestRenderer.ReactTestInstance;
+configure({ adapter: new ReactSixteenAdapter() });
 
-describe('Test App', () => {
-	describe('Test Navigation Bar', () => {
-		it('Should have two links', (done) => {
-			renderer = TestRenderer.create(<NavigationComponent />);
-			console.log(renderer.toJSON());
-		});
+spy(NavigationComponent.prototype, 'componentDidMount');
+
+describe('<NavigationComponent/>', () => {
+	it('Should have two links', () => {
+		//expect(1).to.equal(1);
+		const wrapper = mount(<NavigationComponent />);
+		expect(NavigationComponent.prototype.componentDidMount).to.have.property('callCount', 1);
 	});
 });

@@ -9,6 +9,7 @@ import NavLink from 'reactstrap/lib/NavLink';
 interface NavigationComponentState {
 	isOpen: boolean;
 }
+
 export default class NavigationComponent extends React.Component<{}, NavigationComponentState> {
 	constructor(props: any) {
 		super(props);
@@ -17,6 +18,7 @@ export default class NavigationComponent extends React.Component<{}, NavigationC
 			isOpen: false
 		};
 	}
+	componentDidMount() {}
 
 	toggle() {
 		this.setState({
