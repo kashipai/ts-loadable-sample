@@ -15,4 +15,8 @@ describe('<NavigationComponent/>', () => {
 		const wrapper = mount(<NavigationComponent />);
 		expect(NavigationComponent.prototype.componentDidMount).to.have.property('callCount', 1);
 	});
+
+	it('should fail', () => {
+		expect(1).to.equal(2);
+	});
 });
