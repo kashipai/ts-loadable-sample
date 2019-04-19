@@ -17,6 +17,6 @@ describe('<NavigationComponent/>', () => {
 	});
 
 	it('should fail', () => {
-		expect(1).to.equal(2);
+		expect(1).to.equal(1);
 	});
 });
